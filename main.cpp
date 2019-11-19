@@ -24,7 +24,6 @@ double rotate_y=0;
 double rotate_x=0;
 int buka = 0;
 int sudut = 0;
-
 // ----------------------------------------------------------
 // display() Callback function
 // ----------------------------------------------------------
@@ -92,10 +91,37 @@ void display(){
   // Dinding Belakang sisi kiri
   glBegin(GL_POLYGON);
   glColor3ub(5, 140, 250);
-  glVertex3f(  0.0, -0.5, 0.5 );
-  glVertex3f(  0.0,  0.5, 0.5 );
+  glVertex3f( -0.3, -0.5, 0.5 );
+  glVertex3f( -0.3,  0.5, 0.5 );
   glVertex3f( -0.5,  0.5, 0.5 );
   glVertex3f( -0.5, -0.5, 0.5 );
+  glEnd();
+
+  // Dinding Belakang sisi kiri tengah atas
+  glBegin(GL_POLYGON);
+  glColor3ub(5, 140, 250);
+  glVertex3f( -0.3,  0.2, 0.5 );
+  glVertex3f( -0.3,  0.5, 0.5 );
+  glVertex3f( -0.12, 0.5, 0.5 );
+  glVertex3f( -0.12, 0.2, 0.5 );
+  glEnd();
+
+  // Dinding Belakang sisi kiri tengah bawah
+  glBegin(GL_POLYGON);
+  glColor3ub(5, 140, 250);
+  glVertex3f( -0.3,  -0.2, 0.5 );
+  glVertex3f( -0.3,  -0.5, 0.5 );
+  glVertex3f( -0.12, -0.5, 0.5 );
+  glVertex3f( -0.12, -0.2, 0.5 );
+  glEnd();
+
+  // Dinding Belakang sisi tengah
+  glBegin(GL_POLYGON);
+  glColor3ub(5, 140, 250);
+  glVertex3f(  0.0, -0.5, 0.5 );
+  glVertex3f(  0.0,  0.5, 0.5 );
+  glVertex3f( -0.12,  0.5, 0.5 );
+  glVertex3f( -0.12, -0.5, 0.5 );
   glEnd();
 
   // Dinding Belakang sisi tengah atas
@@ -116,68 +142,60 @@ void display(){
   glVertex3f( 0.3, -0.5, 0.5 );
   glEnd();
 
-  //   // Pintu belakang1
-  // glBegin(GL_POLYGON);
-  // glColor3f(  0.1,  0.2, 0.2 );
-  // glVertex3f( 0.3, -0.5, 0.5 );
-  // glVertex3f( 0.3,  0.1, 0.5 );
-  // glVertex3f( 0.0,  0.1, 0.5 );
-  // glVertex3f( 0.0, -0.5, 0.5 );
-  // glEnd();
-
 // JENDELA
   glBegin(GL_POLYGON);
   glColor3ub(5, 250, 83);
-  glVertex3f(-0.3, 0.2 ,0.499);
-  glVertex3f(-0.12, 0.2 ,0.499);
-  glVertex3f(-0.12, -0.2 ,0.499);
-  glVertex3f(-0.3, -0.2 ,0.499);
+  glVertex3f(-0.3, 0.2 ,0.5);
+  glVertex3f(-0.12, 0.2 ,0.5);
+  glVertex3f(-0.12, -0.2 ,0.5);
+  glVertex3f(-0.3, -0.2 ,0.5);
   glEnd();
 
   glBegin(GL_LINES);
   glLineWidth(.9);
   glColor3ub(61, 45, 2);
-  glVertex3f(-0.3, 0.2 ,0.498);
-  glVertex3f(-0.3, -0.2 ,0.498);
+  glVertex3f(-0.3, 0.2 ,0.499);
+  glVertex3f(-0.3, -0.2 ,0.499);
   glEnd();
 
   glBegin(GL_LINES);
   glLineWidth(0.9);
   glColor3ub(61, 45, 2);
-  glVertex3f(-0.21, 0.2 ,0.498);
-  glVertex3f(-0.21, -0.2 ,0.498);
+  glVertex3f(-0.21, 0.2 ,0.499);
+  glVertex3f(-0.21, -0.2 ,0.499);
   glEnd();
 
   glBegin(GL_LINES);
   glLineWidth(0.9);
   glColor3ub(61, 45, 2);
-  glVertex3f(-0.12, 0.2 ,0.498);
-  glVertex3f(-0.12, -0.2 ,0.498);
+  glVertex3f(-0.12, 0.2 ,0.499);
+  glVertex3f(-0.12, -0.2 ,0.499);
   glEnd();
 
   glBegin(GL_LINES);
   glLineWidth(0.9);
   glColor3ub(61, 45, 2);
-  glVertex3f(-0.3, 0.2 ,0.498);
-  glVertex3f(-0.12, 0.2 ,0.498);
+  glVertex3f(-0.3, 0.2 ,0.499);
+  glVertex3f(-0.12, 0.2 ,0.499);
   glEnd();
 
   glBegin(GL_LINES);
   glLineWidth(0.9);
   glColor3ub(61, 45, 2);
-  glVertex3f(-0.3, 0.0 ,0.498);
-  glVertex3f(-0.12, 0.0 ,0.498);
+  glVertex3f(-0.3, 0.0 ,0.499);
+  glVertex3f(-0.12, 0.0 ,0.499);
   glEnd();
 
   glBegin(GL_LINES);
   glLineWidth(0.9);
   glColor3ub(61, 45, 2);
-  glVertex3f(-0.3, -0.2 ,0.498);
-  glVertex3f(-0.12, -0.2 ,0.498);
+  glVertex3f(-0.3, -0.2 ,0.499);
+  glVertex3f(-0.12, -0.2 ,0.499);
   glEnd();
+  
+// END JENDELA
 
   bukapintu();
-// END JENDELA
 
   glFlush();
   glutSwapBuffers();
@@ -188,7 +206,7 @@ void display(){
 void timer(int a){
   sudut+=1;
   glutPostRedisplay();
-  if (sudut < 145){
+  if (sudut < 125){
     glutTimerFunc(10, timer, 0);
   }
 }
@@ -203,17 +221,25 @@ void timerdua(int a){
 
 //Control
 void klik(int key, int state, int x, int y){
-  if (key == GLUT_LEFT_BUTTON && state==GLUT_DOWN && buka==0){
+  if (key == GLUT_LEFT_BUTTON && state==GLUT_DOWN){
     buka += 1;
     printf("klik");
     glutTimerFunc(1, timer, 0);
-  } else {
+  } 
+  else if (key == GLUT_RIGHT_BUTTON && state==GLUT_DOWN){ 
     buka -= 1;
     printf("klok");
-    glutTimerFunc(1, timerdua, 0);
+    glutTimerFunc(1, timerdua, 145);
   }
-
 }
+//Control
+// void klok(unsigned char key, int state, int x, int y){
+//   if (key == 'f' && state==GLUT_DOWN && buka==1){
+//     buka -= 1;
+//     printf("klok");
+//     glutTimerFunc(1, timerdua, 0);
+//   } 
+// }
 
 
 // ----------------------------------------------------------
