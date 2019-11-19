@@ -22,10 +22,26 @@ void specialKeys();
 // ----------------------------------------------------------
 double rotate_y=0;
 double rotate_x=0;
+int buka = 0;
+int sudut = 0;
 
 // ----------------------------------------------------------
 // display() Callback function
 // ----------------------------------------------------------
+void bukapintu(){
+    glTranslatef(0.3, -0.5, 0.5);
+    glRotatef(-sudut, 0.0, 1.0, 0.0);
+    glBegin(GL_POLYGON);
+      glColor3ub(255, 106, 0);
+      glVertex3f( 0.0, 0.0, 0.0 );
+      glVertex3f( 0.0,  0.6, 0.0 );
+      glVertex3f( -0.3, 0.6, 0.0 );
+      glVertex3f( -0.3, 0.0, 0.0 );
+    glEnd();
+    glRotatef(sudut, 0.0, 1.0, 0.0);
+    glTranslatef(-0.3, 0.5, -0.5);
+}
+
 void display(){
 
   //  Clear screen and Z-buffer
@@ -55,45 +71,9 @@ void display(){
 
   //glEnd();
 
-  // White side - BACK
+  // Dinding Kiri
   glBegin(GL_POLYGON);
-  glColor3f(   0.1,  0.9, 0.9 );
-  glVertex3f(  0.5, -0.5, 0.5 );
-  glVertex3f(  0.5,  0.5, 0.5 );
-  glVertex3f( -0.5,  0.5, 0.5 );
-  glVertex3f( -0.5, -0.5, 0.5 );
-  glEnd();
-
-    // Jendela
-  glBegin(GL_POLYGON);
-  glColor3f(   0.0,  0.9, 0.9 );
-  glVertex3f(  0.5, 0.0, 0.5 );
-  glVertex3f(  0.5, 0.2, 0.5 );
-  glVertex3f( -0.0, 0.2, 0.5 );
-  glVertex3f( -0.5, 0.0, 0.5 );
-  glEnd();
-
-    // Pintu belakang1
-  glBegin(GL_POLYGON);
-  glColor3f(  0.1,  0.2, 0.2 );
-  glVertex3f( 0.3, -0.5, 0.49 );
-  glVertex3f( 0.3,  0.1, 0.49 );
-  glVertex3f( 0.0,  0.1, 0.49 );
-  glVertex3f( 0.0, -0.5, 0.49 );
-  glEnd();
-
-    // Pintu belakang2
-  glBegin(GL_POLYGON);
-  glColor3f(  0.1,  0.2, 0.2 );
-  glVertex3f( 0.3, -0.5, 0.51 );
-  glVertex3f( 0.3,  0.1, 0.51 );
-  glVertex3f( 0.0,  0.1, 0.51 );
-  glVertex3f( 0.0, -0.5, 0.51 );
-  glEnd();
-
-  // Green side - LEFT
-  glBegin(GL_POLYGON);
-  glColor3f(   0.1,  0.3, 0.9 );
+  glColor3ub(255, 125, 185);
   glVertex3f( -0.5, -0.5,  0.5 );
   glVertex3f( -0.5,  0.5,  0.5 );
   glVertex3f( -0.5,  0.5, -0.5 );
@@ -109,10 +89,132 @@ void display(){
   glVertex3f( -0.5, -0.5, -0.5 );
   glEnd();
 
+  // Dinding Belakang sisi kiri
+  glBegin(GL_POLYGON);
+  glColor3ub(5, 140, 250);
+  glVertex3f(  0.0, -0.5, 0.5 );
+  glVertex3f(  0.0,  0.5, 0.5 );
+  glVertex3f( -0.5,  0.5, 0.5 );
+  glVertex3f( -0.5, -0.5, 0.5 );
+  glEnd();
+
+  // Dinding Belakang sisi tengah atas
+  glBegin(GL_POLYGON);
+  glColor3ub(5, 140, 250);
+  glVertex3f(  0.3, 0.1, 0.5 );
+  glVertex3f(  0.3,  0.5, 0.5 );
+  glVertex3f( 0.0,  0.5, 0.5 );
+  glVertex3f( 0.0, 0.1, 0.5 );
+  glEnd();
+
+  // Dinding Belakang sisi kanan
+  glBegin(GL_POLYGON);
+  glColor3ub(5, 140, 250);
+  glVertex3f(  0.5, -0.5, 0.5 );
+  glVertex3f(  0.5,  0.5, 0.5 );
+  glVertex3f( 0.3,  0.5, 0.5 );
+  glVertex3f( 0.3, -0.5, 0.5 );
+  glEnd();
+
+  //   // Pintu belakang1
+  // glBegin(GL_POLYGON);
+  // glColor3f(  0.1,  0.2, 0.2 );
+  // glVertex3f( 0.3, -0.5, 0.5 );
+  // glVertex3f( 0.3,  0.1, 0.5 );
+  // glVertex3f( 0.0,  0.1, 0.5 );
+  // glVertex3f( 0.0, -0.5, 0.5 );
+  // glEnd();
+
+// JENDELA
+  glBegin(GL_POLYGON);
+  glColor3ub(5, 250, 83);
+  glVertex3f(-0.3, 0.2 ,0.499);
+  glVertex3f(-0.12, 0.2 ,0.499);
+  glVertex3f(-0.12, -0.2 ,0.499);
+  glVertex3f(-0.3, -0.2 ,0.499);
+  glEnd();
+
+  glBegin(GL_LINES);
+  glLineWidth(.9);
+  glColor3ub(61, 45, 2);
+  glVertex3f(-0.3, 0.2 ,0.498);
+  glVertex3f(-0.3, -0.2 ,0.498);
+  glEnd();
+
+  glBegin(GL_LINES);
+  glLineWidth(0.9);
+  glColor3ub(61, 45, 2);
+  glVertex3f(-0.21, 0.2 ,0.498);
+  glVertex3f(-0.21, -0.2 ,0.498);
+  glEnd();
+
+  glBegin(GL_LINES);
+  glLineWidth(0.9);
+  glColor3ub(61, 45, 2);
+  glVertex3f(-0.12, 0.2 ,0.498);
+  glVertex3f(-0.12, -0.2 ,0.498);
+  glEnd();
+
+  glBegin(GL_LINES);
+  glLineWidth(0.9);
+  glColor3ub(61, 45, 2);
+  glVertex3f(-0.3, 0.2 ,0.498);
+  glVertex3f(-0.12, 0.2 ,0.498);
+  glEnd();
+
+  glBegin(GL_LINES);
+  glLineWidth(0.9);
+  glColor3ub(61, 45, 2);
+  glVertex3f(-0.3, 0.0 ,0.498);
+  glVertex3f(-0.12, 0.0 ,0.498);
+  glEnd();
+
+  glBegin(GL_LINES);
+  glLineWidth(0.9);
+  glColor3ub(61, 45, 2);
+  glVertex3f(-0.3, -0.2 ,0.498);
+  glVertex3f(-0.12, -0.2 ,0.498);
+  glEnd();
+
+  bukapintu();
+// END JENDELA
+
   glFlush();
   glutSwapBuffers();
 
 }
+
+//Animasi
+void timer(int a){
+  sudut+=1;
+  glutPostRedisplay();
+  if (sudut < 145){
+    glutTimerFunc(10, timer, 0);
+  }
+}
+
+void timerdua(int a){
+  sudut-=1;
+  glutPostRedisplay();
+  if (sudut > 0){
+    glutTimerFunc(10, timer, 0);
+  }
+}
+
+//Control
+void klik(int key, int state, int x, int y){
+  if (key == GLUT_LEFT_BUTTON && state==GLUT_DOWN && buka==0){
+    buka += 1;
+    printf("klik");
+    glutTimerFunc(1, timer, 0);
+  } else {
+    buka -= 1;
+    printf("klok");
+    glutTimerFunc(1, timerdua, 0);
+  }
+
+}
+
 
 // ----------------------------------------------------------
 // specialKeys() Callback Function
@@ -176,6 +278,7 @@ int main(int argc, char* argv[]){
   glutDisplayFunc(display);
   glutSpecialFunc(specialKeys);
   glutReshapeFunc(reshape);
+  glutMouseFunc(klik);
 
   //  Pass control to GLUT for events
   glutMainLoop();
