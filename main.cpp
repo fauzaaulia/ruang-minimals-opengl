@@ -23,13 +23,16 @@ void specialKeys();
 double rotate_y=0;
 double rotate_x=0;
 int buka = 0;
+int bukak = 0;
 int sudut = 0;
+int sudutcuk = 0;
 // ----------------------------------------------------------
 // display() Callback function
 // ----------------------------------------------------------
 void bukapintu(){
     glTranslatef(0.3, -0.5, 0.5);
     glRotatef(-sudut, 0.0, 1.0, 0.0);
+
     glBegin(GL_POLYGON);
       glColor3ub(255, 106, 0);
       glVertex3f( 0.0, 0.0, 0.0 );
@@ -37,8 +40,87 @@ void bukapintu(){
       glVertex3f( -0.3, 0.6, 0.0 );
       glVertex3f( -0.3, 0.0, 0.0 );
     glEnd();
+
     glRotatef(sudut, 0.0, 1.0, 0.0);
     glTranslatef(-0.3, 0.5, -0.5);
+}
+
+void bukajendela(){
+    glTranslatef(-0.3, 0.2 ,0.5);
+    glRotatef(-sudutcuk, 1.0, 0.0, 0.0);
+
+    glBegin(GL_POLYGON);
+        glColor3ub(5, 250, 83);
+      glVertex3f( 0.0, 0.0, 0.0 );
+      glVertex3f( 0.0, -0.4, 0.0 );
+      glVertex3f( 0.18,-0.4, 0.0 );
+      glVertex3f( 0.18, 0.0, 0.0 );
+    glEnd();
+
+    glBegin(GL_LINES);
+      glColor3ub(61, 45, 2);
+      glVertex3f( 0.0, 0.0, 0.001 );
+      glVertex3f( 0.0, -0.4, 0.001 );
+    glEnd();
+    glBegin(GL_LINES);
+      glColor3ub(61, 45, 2);
+      glVertex3f( 0.0, 0.0, 0.001 );
+      glVertex3f( 0.18, 0.0, 0.001 );
+    glEnd();
+    glBegin(GL_LINES);
+      glColor3ub(61, 45, 2);
+      glVertex3f( 0.18,-0.4, 0.001 );
+      glVertex3f( 0.0, -0.4, 0.001 );
+    glEnd();
+    glBegin(GL_LINES);
+      glColor3ub(61, 45, 2);
+      glVertex3f( 0.18,-0.4, 0.001 );
+      glVertex3f( 0.18, 0.0, 0.001 );
+    glEnd();
+    glBegin(GL_LINES);
+      glColor3ub(61, 45, 2);
+      glVertex3f( 0.18,-0.2, 0.001 );
+      glVertex3f( 0.0, -0.2, 0.001 );
+    glEnd();
+    glBegin(GL_LINES);
+      glColor3ub(61, 45, 2);
+      glVertex3f( 0.09,-0.4, 0.001 );
+      glVertex3f( 0.09, 0.0, 0.001 );
+    glEnd();
+
+    glBegin(GL_LINES);
+      glColor3ub(61, 45, 2);
+      glVertex3f( 0.0, 0.0, -0.001 );
+      glVertex3f( 0.0, -0.4, -0.001 );
+    glEnd();
+    glBegin(GL_LINES);
+      glColor3ub(61, 45, 2);
+      glVertex3f( 0.0, 0.0, -0.001 );
+      glVertex3f( 0.18, 0.0, -0.001 );
+    glEnd();
+    glBegin(GL_LINES);
+      glColor3ub(61, 45, 2);
+      glVertex3f( 0.18,-0.4, -0.001 );
+      glVertex3f( 0.0, -0.4, -0.001 );
+    glEnd();
+    glBegin(GL_LINES);
+      glColor3ub(61, 45, 2);
+      glVertex3f( 0.18,-0.4, -0.001 );
+      glVertex3f( 0.18, 0.0, -0.001 );
+    glEnd();
+    glBegin(GL_LINES);
+      glColor3ub(61, 45, 2);
+      glVertex3f( 0.18,-0.2, -0.001 );
+      glVertex3f( 0.0, -0.2, -0.001 );
+    glEnd();
+    glBegin(GL_LINES);
+      glColor3ub(61, 45, 2);
+      glVertex3f( 0.09,-0.4, -0.001 );
+      glVertex3f( 0.09, 0.0, -0.001 );
+    glEnd();
+
+    glRotatef(sudutcuk, 1.0, 0.0, 0.0);
+    glTranslatef(0.3, -0.2, -0.5);
 }
 
 void display(){
@@ -142,60 +224,8 @@ void display(){
   glVertex3f( 0.3, -0.5, 0.5 );
   glEnd();
 
-// JENDELA
-  glBegin(GL_POLYGON);
-  glColor3ub(5, 250, 83);
-  glVertex3f(-0.3, 0.2 ,0.5);
-  glVertex3f(-0.12, 0.2 ,0.5);
-  glVertex3f(-0.12, -0.2 ,0.5);
-  glVertex3f(-0.3, -0.2 ,0.5);
-  glEnd();
-
-  glBegin(GL_LINES);
-  glLineWidth(.9);
-  glColor3ub(61, 45, 2);
-  glVertex3f(-0.3, 0.2 ,0.499);
-  glVertex3f(-0.3, -0.2 ,0.499);
-  glEnd();
-
-  glBegin(GL_LINES);
-  glLineWidth(0.9);
-  glColor3ub(61, 45, 2);
-  glVertex3f(-0.21, 0.2 ,0.499);
-  glVertex3f(-0.21, -0.2 ,0.499);
-  glEnd();
-
-  glBegin(GL_LINES);
-  glLineWidth(0.9);
-  glColor3ub(61, 45, 2);
-  glVertex3f(-0.12, 0.2 ,0.499);
-  glVertex3f(-0.12, -0.2 ,0.499);
-  glEnd();
-
-  glBegin(GL_LINES);
-  glLineWidth(0.9);
-  glColor3ub(61, 45, 2);
-  glVertex3f(-0.3, 0.2 ,0.499);
-  glVertex3f(-0.12, 0.2 ,0.499);
-  glEnd();
-
-  glBegin(GL_LINES);
-  glLineWidth(0.9);
-  glColor3ub(61, 45, 2);
-  glVertex3f(-0.3, 0.0 ,0.499);
-  glVertex3f(-0.12, 0.0 ,0.499);
-  glEnd();
-
-  glBegin(GL_LINES);
-  glLineWidth(0.9);
-  glColor3ub(61, 45, 2);
-  glVertex3f(-0.3, -0.2 ,0.499);
-  glVertex3f(-0.12, -0.2 ,0.499);
-  glEnd();
-  
-// END JENDELA
-
   bukapintu();
+  bukajendela();
 
   glFlush();
   glutSwapBuffers();
@@ -215,21 +245,48 @@ void timerdua(int a){
   sudut-=1;
   glutPostRedisplay();
   if (sudut > 0){
-    glutTimerFunc(10, timer, 0);
+    glutTimerFunc(10, timerdua, 0);
+  }
+}
+
+//Animasi
+void timercuk(int a){
+  sudutcuk+=1;
+  glutPostRedisplay();
+  if (sudutcuk < 15){
+    glutTimerFunc(10, timercuk, 0);
+  }
+}
+
+void timerduacuk(int a){
+  sudutcuk-=1;
+  glutPostRedisplay();
+  if (sudutcuk > 0){
+    glutTimerFunc(10, timerduacuk, 0);
   }
 }
 
 //Control
-void klik(int key, int state, int x, int y){
-  if (key == GLUT_LEFT_BUTTON && state==GLUT_DOWN){
+void klik(unsigned char key, int x, int y){
+  if (key == 'P' && buka==0){
     buka += 1;
     printf("klik");
     glutTimerFunc(1, timer, 0);
-  } 
-  else if (key == GLUT_RIGHT_BUTTON && state==GLUT_DOWN){ 
+  }
+  else if (key == 'P' && buka==1){
     buka -= 1;
     printf("klok");
-    glutTimerFunc(1, timerdua, 145);
+    glutTimerFunc(1, timerdua, 0);
+  }
+  else if (key == 'J' && bukak==0){
+    bukak += 1;
+    printf("klikcuk");
+    glutTimerFunc(1, timercuk, 0);
+  }
+  else if (key == 'J' && bukak==1){
+    bukak -= 1;
+    printf("klokcuk");
+    glutTimerFunc(1, timerduacuk, 0);
   }
 }
 //Control
@@ -238,7 +295,7 @@ void klik(int key, int state, int x, int y){
 //     buka -= 1;
 //     printf("klok");
 //     glutTimerFunc(1, timerdua, 0);
-//   } 
+//   }
 // }
 
 
@@ -304,7 +361,7 @@ int main(int argc, char* argv[]){
   glutDisplayFunc(display);
   glutSpecialFunc(specialKeys);
   glutReshapeFunc(reshape);
-  glutMouseFunc(klik);
+  glutKeyboardFunc(klik);
 
   //  Pass control to GLUT for events
   glutMainLoop();
